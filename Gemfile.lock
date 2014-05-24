@@ -34,6 +34,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    awesome_print (1.2.0)
     builder (3.2.2)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -56,6 +57,9 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hike (1.2.3)
     httparty (0.13.1)
       json (~> 1.8)
@@ -157,9 +161,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   capybara
   coffee-rails (~> 4.0.0)
   factory_girl_rails
+  figaro
   heroku_secrets!
   httparty
   jbuilder (~> 2.0)
