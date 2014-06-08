@@ -1,7 +1,8 @@
 require 'httparty'
 
 
-class Workshare
+class WorkshareApi
+	
 	include HTTParty
 	
 	def initialize(u, p)
