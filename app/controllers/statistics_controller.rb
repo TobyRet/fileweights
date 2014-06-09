@@ -6,20 +6,15 @@ class StatisticsController < ApplicationController
 	end
 
 	def create
-		e = params.permit(:email)
-		p = params.permit(:password)
+		@email = params.permit(:email)
+		@password = params.permit(:password)
 
-		auth = { email: e, password: p }
+		auth = { email: @email, password: @password }
 		response = HTTParty.get("http://my.workshare.com/api/open-v1.0/files.json", 
 			basic_auth: auth )
 
-		if response.success?
-			flash[:notice] = "Hooray"
-  			redirect_to 'show'
-  		else
-  			flash[:notice] = "Something bad happened"
-  			render 'new'
-  		end
+  		render 'show'
+
 	end
 
 	def show
