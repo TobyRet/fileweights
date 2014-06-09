@@ -1,4 +1,5 @@
 require './lib/workshare_api.rb'
+require './lib/file_values.rb'
 
 class StatisticsController < ApplicationController
 
@@ -6,19 +7,16 @@ class StatisticsController < ApplicationController
 	end
 
 	def create
-		@email = params.permit(:email)
-		@password = params.permit(:password)
+		email = params.permit(:email)
+		password = params.permit(:password)
 
-		auth = { email: @email, password: @password }
-		response = HTTParty.get("http://my.workshare.com/api/open-v1.0/files.json", 
-			basic_auth: auth )
+		@request = WorkshareApi.new(email['email'], password['password']).request_files
+		@values = FileValues.new(@request).all_files
 
-  		render 'show'
-
+		render 'show'
 	end
 
 	def show
-		#JSON.parse(response.body)
 	end
 
 end

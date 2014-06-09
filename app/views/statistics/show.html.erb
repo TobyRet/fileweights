@@ -1,1 +1,7 @@
 <h2>My files</h2>
+
+<div class = "file_values">
+	<% @values.map do |file| %>
+		<%= "#{ file[0] }, #{ file[1] } mb" %><br/>
+	<% end %>
+</div>
