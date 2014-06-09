@@ -1,7 +1,11 @@
-<h2>My files</h2>
+<div class="page-header">
+	<h2>My Files (name / size in MB)</h2>
+</div>
 
 <div class = "file_values">
 	<% @values.map do |file| %>
-		<%= "#{ file[0] }, #{ file[1] } mb" %><br/>
+		<%= "#{ file[0] }, #{ file[1] }" %><br/>
 	<% end %>
 </div>
+
+<h2>Output:</h2>
