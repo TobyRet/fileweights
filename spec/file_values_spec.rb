@@ -4,33 +4,30 @@ require './lib/file_values'
 
 describe 'Calculating file values from JSON' do 
 
-	xit 'returns a list of file names' do
+	let(:request) { WorkshareApi.new('toby.retallick@gmail.com', ENV['WORKSHARE_PASS'] ).request_files }
+	let(:values) { FileValues.new(request) }
 
-		request = WorkshareApi.new('toby.retallick@gmail.com', ENV['WORKSHARE_PASS'] ).request_files
-		values = FileValues.new(request)
+	context 'listing files' do
 
-		expect(values.filenames.count).to eq(5)
-		expect(values.filenames).to eq(["README", "rails_for_zombies_2_cheatsheets", "toby", "Get to Work in 5 Simple Steps", "Workshare for mobile"])
-
-	end
-
-	xit 'returns a list of formatted file sizes' do
-
-		request = WorkshareApi.new('toby.retallick@gmail.com', ENV['WORKSHARE_PASS'] ).request_files
-		values = FileValues.new(request)
-
-		expect(values.filesizes.count).to eq(5)
-		expect(values.filesizes[0]).to eq("0.0")
+		it 'returns a string for each file with formatted name and file size' do
+	
+			expect(values.all_files.length).to eq(9)
+			expect(values.all_files[0]).to eq(["01 Dancehall State Of Mind.mp3", "6.0"])
+	
+		end
 
 	end
 
-	it 'returns a string for each file with formatted name and file size' do
+	context 'calculating file weights' do
 
-		request = WorkshareApi.new('toby.retallick@gmail.com', ENV['WORKSHARE_PASS'] ).request_files
-		values = FileValues.new(request)
+		it 'can calculate the frequency of file types' do
+		end
 
-		expect(values.all_files.length).to eq(9)
-		expect(values.all_files[0]).to eq(["01 Dancehall State Of Mind.mp3", "6.0"])
+		it 'can calculate the gravity for each file' do
+		end
+
+		it 'can calculate the total gravity for all files' do
+		end
 
 	end
 	
