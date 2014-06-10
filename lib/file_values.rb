@@ -1,9 +1,9 @@
 class FileValues
 
 	FILETYPES = {
-		video: ['mp4'],
-		song: ['mp3','wav'],
-		document: ['pdf', 'doc', 'docx', 'odt'],
+		videos: ['mp4'],
+		songs: ['mp3','wav'],
+		documents: ['pdf', 'doc', 'docx', 'odt'],
 		text: ['txt'],
 		binary: ['bin']
 	}
@@ -24,8 +24,13 @@ class FileValues
 		end
 	end
 
-	def video
-		FILETYPES[:video].map { |ft| parse.map { |file| file.select { |ext| ext if ext.include?(ft) } } }.flatten
+	def videos
+		FILETYPES[:videos].map { |ft| parse.map { |file| file.select { |ext| ext if ext.include?(ft) } } }.flatten
 	end
+
+	def songs
+		FILETYPES[:songs].map { |ft| parse.map { |file| file.select { |ext| ext if ext.include?(ft) } } }.flatten
+	end
+
 
 end

@@ -19,7 +19,11 @@ describe 'Calculating file values from JSON' do
 	context 'searching file types' do
 
 		it 'filters Video files' do
-			expect(values.video).to eq(['mp4'])
+			expect(values.videos).to eq(['mp4'])
+		end
+
+		it 'filters Song files' do
+			expect(values.songs).to eq(['mp3'])
 		end
 
 	end
