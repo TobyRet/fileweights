@@ -1,8 +1,8 @@
 class FileValues
 
 	FILETYPES = {
-		video: ['mp4', 'avi'],
-		song:['mp3','wav'],
+		video: ['mp4'],
+		song: ['mp3','wav'],
 		document: ['pdf', 'doc', 'docx', 'odt'],
 		text: ['txt'],
 		binary: ['bin']
@@ -14,7 +14,7 @@ class FileValues
 
 	def parse
 		@request['files'].map do |file|
-			[file['name'], file['extension'], file['size']]
+			[file['name'], file['extension'], file['size'].to_s]
 		end
 	end
 
@@ -22,6 +22,10 @@ class FileValues
 		@request['files'].map do |file| 
 			["#{ file['name'] }.#{ file['extension'] }", "#{ '%.1f' % (file['size'] / 1000000) }"]
 		end
+	end
+
+	def video
+		FILETYPES[:video].map { |ft| parse.map { |file| file.select { |ext| ext if ext.include?(ft) } } }.flatten
 	end
 
 end
